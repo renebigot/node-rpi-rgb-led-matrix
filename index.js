@@ -12,6 +12,7 @@ var util = require("util");
 
 var ledmatrix = require(path.join(__dirname, "build", "Release", "node-rpi-rgb-led-matrix.node"));
 var LedMatrix = ledmatrix.LedMatrix;
+var Polygon   = ledmatrix.SuperPolygon;
 
 LedMatrix.prototype._scroll = LedMatrix.prototype.scroll;
 LedMatrix.prototype.scroll = function(params, callback) {
@@ -64,4 +65,6 @@ LedMatrix.prototype.scroll2Bottom = function(params, callback) {
 	this.scroll(params, callback);
 }
 
-module.exports = LedMatrix;
+module.exports = {};
+module.exports.LedMatrix = LedMatrix; 
+module.exports.SuperPolygon = Polygon;
