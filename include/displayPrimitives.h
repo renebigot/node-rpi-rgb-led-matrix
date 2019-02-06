@@ -5,7 +5,6 @@
 #include <vector>
 #include <tuple> 
 
-/*
 struct Point 
 {
 	const int x; 
@@ -22,10 +21,8 @@ struct Line
 	Line (const Point s, const Point e);
 	int yMax (void) const; 
 	int yMin (void) const; 
-	bool intersects (const Line&) const; 
-	Point intersection (const Line&) const; 
+	std::tuple<Point, bool> intersection (const Line&) const; 
 };
-*/
 
 class SuperPolygon : public node::ObjectWrap
 {
@@ -34,25 +31,19 @@ class SuperPolygon : public node::ObjectWrap
 	static void Init(v8::Local<v8::Object> exports);
 	static void New (const Nan::FunctionCallbackInfo<v8::Value>& args);
 
-	void Draw (void); 
 
-	protected:
-	SuperPolygon (void);
-	static void Draw (const Nan::FunctionCallbackInfo<v8::Value>&);
-
-	/*
 	void Draw (void); 
-	void Fill (void);
+//	void Fill (void);
 
 	protected: 
-	SuperPolygon ( const std::vector<Point>&); 
+	SuperPolygon (void);
+//	SuperPolygon (const std::vector<Point>&); 
 	virtual ~SuperPolygon (void); 
 
 	static void Draw (const Nan::FunctionCallbackInfo<v8::Value>&); 
-	static void Fill (const Nan::FunctionCallbackInfo<v8::Value>&);
+//	static void Fill (const Nan::FunctionCallbackInfo<v8::Value>&);
 
 	private: 
-	std::tuple<int, int, int> boundryIntersections (const Line&);
-	std::tuple<Point, Point>  clipBounds (void); 
-	*/
+//	std::tuple<int, int, int> boundryIntersections (const Line&);
+//	std::tuple<Point, Point>  clipBounds (void); 
 };
