@@ -9,9 +9,12 @@
 #include <nan.h>
 
 #include <ledmatrix.h>
+#include <displayPrimitives.h>
 
 void init(v8::Local<v8::Object> exports) {
   LedMatrix::Init(exports);
+  SuperPolygon::Init(exports);
+
 }
 
 NODE_MODULE(node_rpi_rgb_led_matrix, init);
