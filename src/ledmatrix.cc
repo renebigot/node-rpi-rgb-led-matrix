@@ -529,23 +529,17 @@ void LedMatrix::SetImageBuffer (const Nan::FunctionCallbackInfo<v8::Value>& args
 
 	assert((int)bufl == width*height*3);
 
-	Image* img = new Image();
-	Pixel* pixels = (Pixel*) malloc(sizeof(Pixel)*width*height);
-	for(int i=0; i < width*height; i++) {
-		int j = i*3;
-		Pixel p;
-		p.SetR(buf[j]);
-		p.SetG(buf[j+1]);
-		p.SetB(buf[j+2]);
-		pixels[i] = p;
+	for(int x=0; x<width; ++x) 
+	{
+		for(int y=0; y<height; ++y) 
+		{
+			int pos = y*3+x;
+			canvas->SetPixel(x, y, buf[pos], buf[pos+1], buf[pos+2]);
+		}
 	}
 
-	img->Reset();
-	img->SetPixels(pixels);
-	img->SetWidth(width);
-	img->SetHeight(height);
+	canvas = matrix->SwapOnVSync(canvas);
 
-	matrix->SetImage(img);
 }
 
 void LedMatrix::Draw (const Nan::FunctionCallbackInfo<v8::Value>& args) 
